@@ -1,0 +1,42 @@
+from tkinter import *
+from tkinter import filedialog
+from tkinter import font
+
+  
+root = Tk() 
+root.geometry("1000x500") 
+root.title("tkedit") 
+root.iconbitmap("")
+#root.minsize(height=250, width=350) 
+#root.maxsize(height=250, width=350) 
+
+my_frame = Frame(root) 
+my_frame.pack(pady=5) 
+
+
+text_scroll = Scrollbar(my_frame)
+text_scroll.pack(side=RIGHT, fill=Y)
+
+my_text = Text(my_frame, width=97, height=25, font=("Helvetica", 16), selectbackground="yellow", selectforeground="black", undo=True, yscrollcommand=text_scroll.set)
+my_text.pack()  
+
+
+text_scroll.config(command=my_text.yview) my_menu = Menu(root)
+root.config(menu=my_menu)
+
+
+file_menu = Menu(my_menu, tearoff=False)
+my_menu.add_cascade(label="File", menu=file_menu)
+file_menu.add_command(label="abri")
+file_menu.add_command(label="salvar")
+file_menu.add_command(label="novo",command=root.new)
+file_menu.add_separator()
+file_menu.add_command(label="sair", command=root.quit)
+
+
+status_bar = Label(root, text='Ready    ', anchor=E)
+status_bar.pack(fill=X, side=BOTTOM, ipady=5)
+
+
+root.mainloop()
+X
